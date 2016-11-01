@@ -10,7 +10,7 @@
 
 # 0. Shortcuts.
 
-
+```bash
 CTRL+A  # move to beginning of line  
 CTRL+B  # moves backward one character  
 CTRL+C  # halts the current command  
@@ -38,11 +38,11 @@ CTRL+Z  # stops the current command, resume with fg in the foreground or bg in t
 DELETE  # deletes one character backward
 !!      # repeats the last command
 exit    # logs out of current session
-
+```
 
 # 1. Bash Basics.
 
-
+```bash
 export              # displays all environment variables  
 
 echo $SHELL         # displays the shell you're using  
@@ -52,11 +52,11 @@ bash                # if you want to use bash (type exit to go back to your norm
 whereis bash        # finds out where bash is on your system  
 
 clear               # clears content on window (hide displayed lines)  
-
+```
 
 # 1.1. File Commands.
 
-
+```bash
 ls                            # lists your files  
 ls -l                         # lists your files in 'long format', which contains the exact size of the file, who owns the file and who has the right to look at it, and when it was last modified  
 ls -a                         # lists all files, including hidden files  
@@ -83,20 +83,20 @@ genscript                     # converts plain text files into postscript for pr
 dvips <filename>              # print .dvi files (i.e. files produced by LaTeX)  
 grep <pattern> <filenames>    # looks for the string in the files  
 grep -r <pattern> <dir>       # search recursively for pattern in directory  
-
+```
 
 # 1.2. Directory Commands.
 
-
+```
 mkdir <dirname>  # makes a new directory  
 cd               # changes to home  
 cd <dirname>     # changes directory  
 pwd              # tells you where you currently are  
-
+```
 
 # 1.3. SSH, System Info & Network Commands.
 
-
+```bash
 ssh user@host            # connects to host as user  
 ssh -p <port> user@host  # connects to host on specified port as user  
 ssh-copy-id user@host    # adds your ssh key to host for user to enable a keyed or passwordless login  
@@ -127,14 +127,14 @@ whois <domain>           # gets whois information for domain
 dig <domain>             # gets DNS information for domain  
 dig -x <host>            # reverses lookup host  
 wget <file>              # downloads file  
-
+```
 
 # 2. Basic Shell Programming.
 
 
 # 2.1. Variables.
 
-
+```bash
 varname=value                # defines a variable  
 varname=value command        # defines a variable to be in the environment of a particular subprocess  
 echo $varname                # checks a variable's value  
@@ -182,24 +182,24 @@ ${#varname}                  # returns the length of the value of the variable a
 !(patternlist)               # matches anything except one of the given patterns  
 
 $(UNIX command)              # command substitution: runs the command and returns standard output  
-
+```
 
 # 2.2. Functions.
 The function refers to passed arguments by position (as if they were positional parameters), that is, $1, $2, and so forth.  
 $@ is equal to "$1" "$2"... "$N", where N is the number of positional parameters. $# holds the number of positional parameters.  
 
-
+```bash
 functname() {  
   shell commands  
 }
 
 unset -f functname  # deletes a function definition  
 declare -f          # displays all defined functions in your login session  
-
+```
 
 # 2.3. Flow Control.
 
-
+```bash
 statement1 && statement2  # and operator  
 statement1 || statement2  # or operator  
 
@@ -233,8 +233,8 @@ file1 -ot file2           # file1 is older than file2
 -ge                       # greater than or equal  
 -gt                       # greater than  
 -ne                       # not equal  
-
 ```
+```bash
 if condition
 then
   statements
@@ -284,19 +284,20 @@ done
 # 3. Command-Line Processing Cycle.
 
 
-# The default order for command lookup is functions, followed by built-ins, with scripts and executables last.
-# There are three built-ins that you can use to override this order: `command`, `builtin` and `enable`.
+The default order for command lookup is functions, followed by built-ins, with scripts and executables last.  
+There are three built-ins that you can use to override this order: `command`, `builtin` and `enable`.  
 
+```bash
 command  # removes alias and function lookup. Only built-ins and commands found in the search path are executed
 builtin  # looks up only built-in commands, ignoring functions and commands found in PATH
 enable   # enables and disables shell built-ins
 
 eval     # takes arguments and run them through the command-line processing steps all over again
-
+```
 
 # 4. Input/Output Redirectors.
 
-
+```bash
 cmd1|cmd2  # pipe; takes standard output of cmd1 as standard input to cmd2
 > file     # directs standard output to file
 < file     # takes standard input from file
@@ -318,15 +319,16 @@ n<&m       # file descriptor n is made to be a copy of the input file descriptor
 >&-        # closes the standard output
 n>&-       # closes the ouput from file descriptor n
 n<&-       # closes the input from file descripor n
-
+```
 
 # 5. Process Handling.
 
 
-# To suspend a job, type CTRL+Z while it is running. You can also suspend a job with CTRL+Y.
-# This is slightly different from CTRL+Z in that the process is only stopped when it attempts to read input from terminal.
-# Of course, to interupt a job, type CTRL+C.
+To suspend a job, type CTRL+Z while it is running. You can also suspend a job with CTRL+Y.  
+This is slightly different from CTRL+Z in that the process is only stopped when it attempts to read input from terminal.  
+Of course, to interupt a job, type CTRL+C.  
 
+```bash
 myCommand &  # runs job in the background and prompts back the shell
 
 jobs         # lists all jobs (use with -l to see associated PID)
@@ -351,27 +353,30 @@ trap - sig1 sig2    # resets the action taken when the signal is received to the
 disown <PID|JID>    # removes the process from the list of jobs
 
 wait                # waits until all background jobs have finished
-
+```
 
 # 6. Tips and Tricks.
 
 
-# set an alias
+**set an alias**
+```bash
 cd; nano .bash_profile
 > alias gentlenode='ssh admin@gentlenode.com -p 3404'  # add your alias in .bash_profile
+```
 
-# to quickly go to a specific directory
+**to quickly go to a specific directory**
+```bash
 cd; nano .bashrc
 > shopt -s cdable_vars
 > export websites="/Users/mac/Documents/websites"
 
 source .bashrc
 cd websites
-
+```
 
 # 7. Debugging Shell Programs.
 
-
+```bash
 bash -n scriptname  # don't run commands; check for syntax errors only
 set -o noexec       # alternative (set option in script)
 
@@ -403,4 +408,4 @@ function returntrap {
 }
 
 trap returntrap RETURN  # is executed each time a shell function or a script executed with the . or source commands finishes executing
-
+```
