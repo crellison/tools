@@ -8,3 +8,4 @@ If any tools are not mine or of my own creation, I will give proper attribution.
 
 [javascript snippets](./helpfulTools.js)  
 [bash cheatsheet](./bash-cheatsheet.md) credit to [J. Le Coupanec](https://github.com/LeCoupa)  
+[latex in minutes](./latex.md) credit to [Luong Vo](https://github.com/VoLuong)
