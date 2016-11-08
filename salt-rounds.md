@@ -6,15 +6,15 @@ You should use the maximum number of rounds which is tolerable, performance-wise
 
 The wide picture goes thus:
 
-The time to verify a single password is v on your system. You can adjust this time by selecting the number of rounds in PBKDF2.
-A potential attacker can gather f times more CPU power than you (e.g. you have a single server, and the attacker has 100 big PC, each being twice faster than your server: this leads to f=200).
-The average user has a password of entropy n bits (this means that trying to guess a user password, with a dictionary of "plausible passwords", will take on average 2n-1 tries).
-The attacker will find your system worth attacking if the average password can be cracked in time less than p (that's the attacker's "patience").
-Your goal is to make the average cost to break a single password exceed the attacker patience, so that he does not even tries to, and goes on to concentrate on another, easier target. With the notations detailed above, this means that you want:
+- The time to verify a single password is v on your system. You can adjust this time by selecting the number of rounds in PBKDF2.
+- A potential attacker can gather f times more CPU power than you (e.g. you have a single server, and the attacker has 100 big PC, each being twice faster than your server: this leads to f=200).
+- The average user has a password of entropy n bits (this means that trying to guess a user password, with a dictionary of "plausible passwords", will take on average 2n-1 tries).
+- The attacker will find your system worth attacking if the average password can be cracked in time less than p (that's the attacker's "patience").
+- Your goal is to make the average cost to break a single password exceed the attacker patience, so that he does not even tries to, and goes on to concentrate on another, easier target. With the notations detailed above, this means that you want:
 
 v·2n-1 > f·p
 
-p is beyond your control; it can be estimated with regards to the value of the data and systems protected by the user passwords. Let's say that p is one month (if it takes more than one month, the attacker will not bother trying). You can make f smaller by buying a bigger server; on the other hand, the attacker will try to make f bigger by buying bigger machines. An aggravating point is that password cracking is an embarrassingly parallel task, so the attacker will get a large boost by using GPU which support general programming; so a typical f will still range in the order of a few hundreds.
+p is beyond your control; it can be estimated with regards to the value of the data and systems protected by the user passwords. Let's say that p is one month (if it takes more than one month, the attacker will not bother trying). You can make f smaller by buying a bigger server; on the other hand, the attacker will try to make f bigger by buying bigger machines. An aggravating point is that password cracking is an [embarrassingly parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel) task, so the attacker will get a large boost by using [GPU which support general programming](https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units); so a typical f will still range in the order of a few hundreds.
 
 n relates to the quality of the passwords, which you can somehow influence through a strict password-selection policy, but realistically you will have a hard time getting a value of n beyond, say, 32 bits. If you try to enforce stronger passwords, users will begin to actively fight you, with workarounds such as reusing passwords from elsewhere, writing passwords on sticky notes, and so on.
 
