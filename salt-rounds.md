@@ -12,7 +12,7 @@ The wide picture goes thus:
 - The attacker will find your system worth attacking if the average password can be cracked in time less than p (that's the attacker's "patience").
 - Your goal is to make the average cost to break a single password exceed the attacker patience, so that he does not even tries to, and goes on to concentrate on another, easier target. With the notations detailed above, this means that you want:
 
-v·2n-1 > f·p
+v·2<sup>n-1</sup> > f·p
 
 p is beyond your control; it can be estimated with regards to the value of the data and systems protected by the user passwords. Let's say that p is one month (if it takes more than one month, the attacker will not bother trying). You can make f smaller by buying a bigger server; on the other hand, the attacker will try to make f bigger by buying bigger machines. An aggravating point is that password cracking is an [embarrassingly parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel) task, so the attacker will get a large boost by using [GPU which support general programming](https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units); so a typical f will still range in the order of a few hundreds.
 
