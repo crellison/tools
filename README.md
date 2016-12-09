@@ -22,4 +22,5 @@ openssl pkcs12 -in pushcert.p12 -out pushcert.pem -nodes -clcerts
 
 [bash cheatsheet](./bash-cheatsheet.md) credit to [J. Le Coupanec](https://github.com/LeCoupa)  
 [latex in minutes](./latex.md) credit to [Luong Vo](https://github.com/VoLuong)  
-[salt rounds](./salt-rounds.md) credit to [Thomas Porin](http://security.stackexchange.com/users/655/thomas-pornin)
+[salt rounds](./salt-rounds.md) credit to [Thomas Porin](http://security.stackexchange.com/users/655/thomas-pornin)  
+[save from dev console](./saveConsole.md) credit to [Patrick](http://stackoverflow.com/users/960588/patrick)
